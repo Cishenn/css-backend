@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://dbpro.accelerator.wtf:10034/ccs
+    username: root
+    password: LMS++dev
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
