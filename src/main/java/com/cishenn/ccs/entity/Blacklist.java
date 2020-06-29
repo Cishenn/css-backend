@@ -1,21 +1,18 @@
 package com.cishenn.ccs.entity;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
-/**
- * @Data 就是使用lombok 简化编程
- * lombok 就是省了 getter() setter()等等
- */
 
 @Data
 public class Blacklist {
-    private int id;
+    private Integer servicerId;
+    private Integer customerId;
     private String reason;
+    private String source;
+
+    //DataTimeFormat 对入参进行解析
+    @DateTimeFormat(pattern = "yyyy-MM--dd")
     private Date time;
-    private int cid;
-    private int sid;
-    private Date create_time;
-
-
 }

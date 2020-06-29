@@ -1,8 +1,22 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://dbpro.accelerator.wtf:10034/ccs
     username: root
     password: LMS++dev
+    #全局设置JSON传参
+    jackson:
+      data-format: "yyyy-MM-dd"
+      timezone: "GMT+8"
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.Cishenn.ccs.entity
+  configuration:
+    map-underscore-to-camel-case: true
+#配置Tomcat
+server:
+  port: 8080
+  servlet:
+    context-path: "/ccs"
+

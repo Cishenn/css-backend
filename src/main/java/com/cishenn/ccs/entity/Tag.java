@@ -6,10 +6,12 @@ import java.sql.Date;
 
 @Data
 public class Tag {
-    private int id;
+    private Integer creatorId;
     private String name;
-    private String desc;
-    private int type;
-    private int creator_id;
-    private Date create_time;
+    private String color;
+    private String type;
+    private Integer usedTimes;
+    private Date createTime;
+
+    private String description;
 }
