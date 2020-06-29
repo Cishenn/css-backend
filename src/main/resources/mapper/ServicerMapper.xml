@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cishenn.ccs.dao.ServicerMapper">
+
+    <insert id="save" parameterType="com.cishenn.ccs.entity.Servicer">
+        insert into servicer(phone, password, state, headImg, email, nickName, realName, customerServicePhone, totalOnlineTime, onlineTimeBegin, onlineTimeEnd, sessionCount, msgCount, serviceGroup, serviceRole)
+        values(#{phone}, #{password}, #{state}, #{headImg}, #{email}, #{nickName}, #{realName}, #{customerServicePhone}, #{totalOnlineTime}, #{onlineTimeBegin}, #{onlineTimeEnd}, #{sessionCount}, #{msgCount}, #{serviceGroup}, #{serviceRole})
+    </insert>
+    <update id="update">
+        update servicer set
+            phone = #{customerService.phone},
+            password = #{customerService.password},
+            headImg = #{customerService.headImg},
+            email = #{customerService.email},
+            nickName = #{customerService.nickName},
+            realName = #{customerService.realName},
+            customerServicePhone = #{customerService.customerServicePhone},
+            customerServiceId = #{customerService.totalOnlineTime},
+            totalOnlineTime = #{customerService.totalOnlineTime},
+            onlineTimeBegin = #{customerService.onlineTimeBegin},
+            onlineTimeEnd = #{customerService.onlineTimeEnd},
+            sessionCount = #{customerService.sessionCount},
+            msgCount = #{customerService.msgCount},
+            serviceGroup = #{customerService.serviceGroup},
+            serviceRole = #{customerService.serviceRole}
+        where customerServiceId = #{id};
+    </update>
+    <delete id="delete" parameterType="com.cishenn.ccs.entity.Servicer">
+        delete from servicer
+        where customerServiceId = #{id};
+    </delete>
+    <select id="getOne" resultType="com.cishenn.ccs.entity.Servicer">
+        select * from servicer
+        where customerServiceId = #{id};
+    </select>
+    <select id="getAll" resultType="com.cishenn.ccs.entity.Servicer">
+        select * from servicer
+    </select>
+
+
+</mapper>
