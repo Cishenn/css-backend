@@ -1,11 +1,13 @@
 package com.cishenn.ccs.exception;
 
 import lombok.Data;
+import org.springframework.http.HttpStatus;
 
 @Data
 public class BaseException extends RuntimeException{
     private String error="General Error";
     private Integer status;
+    private HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
     public BaseException(String message){
         super(message);

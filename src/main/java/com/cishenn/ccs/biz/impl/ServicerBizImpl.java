@@ -43,7 +43,7 @@ public class ServicerBizImpl implements IServicerBiz {
         if(result==null){
             throw new ServicerException("Get One Servicer Entity Error(maybe no such entity");
         }
-        return null;
+        return result;
     }
 
     @Override
