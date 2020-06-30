@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cishenn.ccs.dao.SessionMapper">
+<!--TODO此处逻辑需要参考具体界面做细微改动-->
+    <insert id="save">
+
+    </insert>
+
+    <update id="update">
+
+    </update>
+
+    <delete id="delete">
+
+    </delete>
+
+    <select id="getOne" resultType="com.cishenn.ccs.entity.Session">
+
+    </select>
+
+    <select id="getAll" resultType="com.cishenn.ccs.entity.Session">
+
+    </select>
+</mapper>

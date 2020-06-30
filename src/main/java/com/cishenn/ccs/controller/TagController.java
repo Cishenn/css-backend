@@ -38,7 +38,7 @@ public class TagController {
     @GetMapping("/")
     ResponseEntity<Map<String,List<Tag>>> getAll(){
         Map<String, List<Tag>> result=new HashMap();
-        result.put("tag",iTagBiz.getAll());
+        result.put("tags",iTagBiz.getAll());
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
 
