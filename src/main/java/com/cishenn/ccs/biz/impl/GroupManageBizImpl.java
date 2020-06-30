@@ -29,24 +29,24 @@ public class GroupManageBizImpl implements IGroupManagerBiz {
     }
 
     @Override
-    public void update(String name, GroupManage groupmanage) {
-        int result=groupmanagemapper.update(name,groupmanage);
+    public void update(Integer groupId, GroupManage groupmanage) {
+        int result=groupmanagemapper.update(groupId,groupmanage);
         if(result==0){
             throw new  GroupManageException("Update GroupManage Entity Error");
         }
     }
 
     @Override
-    public void delete(String name) {
-        int result=groupmanagemapper.delete(name);
+    public void delete(Integer groupId) {
+        int result=groupmanagemapper.delete(groupId);
         if(result==0){
             throw new TagException("Delete  GroupManage Entity Error");
         }
     }
 
     @Override
-    public GroupManage getOne(String name) {
-        GroupManage result = groupmanagemapper.getOne(name);
+    public GroupManage getOne(Integer groupId) {
+        GroupManage result = groupmanagemapper.getOne(groupId);
         if(result==null){
             throw new TagException("Get One GroupManage Entity Error(maybe no such entity");
         }

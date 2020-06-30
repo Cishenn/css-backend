@@ -24,24 +24,24 @@ public class TagBizImpl implements ITagBiz {
     }
 
     @Override
-    public void update(Integer id, Tag tag) {
-        int result=tagMapper.update(id,tag);
+    public void update(Integer creatorId, Tag tag) {
+        int result=tagMapper.update(creatorId,tag);
         if(result==0){
             throw new TagException("Update Tag Entity Error");
         }
     }
 
     @Override
-    public void delete(Integer id) {
-        int result=tagMapper.delete(id);
+    public void delete(Integer creatorId) {
+        int result=tagMapper.delete(creatorId);
         if(result==0){
             throw new TagException("Delete Tag Entity Error");
         }
     }
 
     @Override
-    public Tag getOne(Integer id) {
-        Tag result=tagMapper.getOne(id);
+    public Tag getOne(Integer creatorId) {
+        Tag result=tagMapper.getOne(creatorId);
         if(result==null){
             throw new TagException("Get One tag Entity Error(maybe no such entity");
         }

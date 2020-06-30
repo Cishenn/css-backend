@@ -9,11 +9,11 @@ import java.util.List;
 public interface TagMapper {
     int save(Tag tag);
 
-    int update(Integer id, Tag tag);
+    int update(Integer creatorId, Tag tag);
 
-    int delete(Integer id);
+    int delete(Integer creatorId);
 
-    Tag getOne(Integer id);
+    Tag getOne(Integer creatorId);
 
     List<Tag> getAll();
 }

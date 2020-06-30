@@ -5,17 +5,20 @@
 <mapper namespace="com.cishenn.ccs.dao.BlacklistMapper">
     <insert id="save" parameterType="com.cishenn.ccs.entity.Blacklist">
         insert into black_list(customerServicerId, customerId, reason, source)
-        values(#{customerServicerId}, #{customerId}, #{reason}, #{source})
+        values(#{blacklist.customerServicerId}, #{blacklist.customerId}, #{blacklist.reason},
+        #{blacklist.source})
     </insert>
 
     <delete id="delete" parameterType="com.cishenn.ccs.entity.Blacklist">
         delete from black_list
         where customerId=#{customerId}
     </delete>
+
     <select id="getOne" resultType="com.cishenn.ccs.entity.Blacklist">
         select * from black_list
         where customerId=${customerId}
     </select>
+
     <select id="getAll" resultType="com.cishenn.ccs.entity.Blacklist">
         select * from black_list
     </select>
