@@ -7,7 +7,7 @@
         insert into tag(creatorId,tag_name,color,type,usedTimes,createTime)
         values(#{creatorId},#{name},#{color},#{type},#{usedTimes},#{createTime})
     </insert>
-
+<!--花括号中的id需要修改格式-->
     <update id="update">
         update tag set
           tag_name = #{tag.name},
