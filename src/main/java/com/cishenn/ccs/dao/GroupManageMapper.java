@@ -9,11 +9,11 @@ import java.util.List;
 public interface GroupManageMapper {
     int save(GroupManage groupmanage);
 
-    int update(String name, GroupManage groupmanage);
+    int update(Integer groupId, GroupManage groupmanage);
 
-    int delete(String name);
+    int delete(Integer groupId);
 
-    GroupManage getOne(String name);
+    GroupManage getOne(Integer groupId);
 
     List<GroupManage> getAll();
 }

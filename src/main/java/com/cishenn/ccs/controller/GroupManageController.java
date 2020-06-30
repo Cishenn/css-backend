@@ -4,13 +4,14 @@ import com.cishenn.ccs.entity.GroupManage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/tag")
+@RequestMapping("/groupManage")
 public class GroupManageController {
     @Autowired
     IGroupManagerBiz iGroupManagerBiz;
@@ -20,19 +21,19 @@ public class GroupManageController {
         iGroupManagerBiz.save(groupManage);
     }
 
-    @DeleteMapping("/{id}")
-    void delete(@PathVariable String name){
-        iGroupManagerBiz.delete(name);
+    @DeleteMapping("/{groupId}")
+    void delete(@PathVariable Integer groupId){
+        iGroupManagerBiz.delete(groupId);
     }
 
-    @PutMapping("/{id}")
-    void update(@PathVariable String name,@RequestBody GroupManage groupManage){
-        iGroupManagerBiz.update(name,groupManage);
+    @PutMapping("/{groupId}")
+    void update(@PathVariable Integer groupId,@RequestBody GroupManage groupManage){
+        iGroupManagerBiz.update(groupId, groupManage);
     }
 
-    @GetMapping("/{id}")
-    ResponseEntity<GroupManage> getOne(@PathVariable String name){
-        return new ResponseEntity<>(iGroupManagerBiz.getOne(name), HttpStatus.OK);
+    @GetMapping("/{groupId}")
+    ResponseEntity<GroupManage> getOne(@PathVariable Integer groupId){
+        return new ResponseEntity<>(iGroupManagerBiz.getOne(groupId), HttpStatus.OK);
     }
 
     @GetMapping("/")

@@ -6,11 +6,11 @@ public interface IGroupManagerBiz {
 
         void save(GroupManage groupmanage);
 
-        void update(String name, GroupManage groupmanage );
+        void update(Integer groupId, GroupManage groupmanage );
 
-        void delete(String name);
+        void delete(Integer groupId);
 
-        GroupManage getOne(String name);
+        GroupManage getOne(Integer groupId);
 
         List<GroupManage> getAll();
 }

@@ -4,6 +4,7 @@ import com.cishenn.ccs.entity.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
@@ -20,19 +21,19 @@ public class TagController {
         iTagBiz.save(tag);
     }
 
-    @DeleteMapping("/{id}")
-    void delete(@PathVariable Integer id){
-        iTagBiz.delete(id);
+    @DeleteMapping("/{creatorId}")
+    void delete(@PathVariable Integer creatorId){
+        iTagBiz.delete(creatorId);
     }
 
-    @PutMapping("/{id}")
-    void update(@PathVariable Integer id,@RequestBody Tag tag){
-        iTagBiz.update(id, tag);
+    @PutMapping("/{creatorId}")
+    void update(@PathVariable Integer creatorId,@RequestBody Tag tag){
+        iTagBiz.update(creatorId, tag);
     }
 
-    @GetMapping("/{id}")
-    ResponseEntity<Tag> getOne(@PathVariable Integer id){
-        return new ResponseEntity<>(iTagBiz.getOne(id), HttpStatus.OK);
+    @GetMapping("/{creatorId}")
+    ResponseEntity<Tag> getOne(@PathVariable Integer creatorId){
+        return new ResponseEntity<>(iTagBiz.getOne(creatorId), HttpStatus.OK);
     }
 
     @GetMapping("/")

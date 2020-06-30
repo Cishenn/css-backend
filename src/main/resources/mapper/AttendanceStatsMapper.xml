@@ -5,11 +5,11 @@
 <mapper namespace="com.cishenn.ccs.dao.AttendanceStatsMapper">
     <insert id="save" parameterType="com.cishenn.ccs.entity.AttendanceStats">
         insert into attendance_statistics(id)
-        values(#{id})
+        values(#{attendanceStats.id})
     </insert>
     <update id="update" parameterType="com.cishenn.ccs.entity.AttendanceStats">
         update attendance_statistics set
-        busytime=#{busytime}
+        busytime=#{attendanceStats.busytime}
         where id=#{id}
 
     </update>

@@ -1,9 +1,9 @@
 package com.cishenn.ccs.controller;
 
 import com.cishenn.ccs.biz.IAttendanceStatsBiz;
-import com.cishenn.ccs.biz.IBlacklistBiz;
+import com.cishenn.ccs.biz.IViewStatisticsBiz;
 import com.cishenn.ccs.entity.AttendanceStats;
-import com.cishenn.ccs.entity.Blacklist;
+import com.cishenn.ccs.entity.ViewStatistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,30 +15,30 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/attendance_stats")
-public class AttendanceStatsController {
+@RequestMapping("/view_statistics")
+public class ViewStatisticsController {
     @Autowired
-    IAttendanceStatsBiz iAttendanceStatsBiz;
+    IViewStatisticsBiz iViewStatisticsBiz;
 
     @PostMapping("/")
-    void save(@RequestBody AttendanceStats attendanceStats) {
-        iAttendanceStatsBiz.save(attendanceStats);
+    void save(@RequestBody ViewStatistics viewStatistics) {
+        iViewStatisticsBiz.save(viewStatistics);
     }
 
     @DeleteMapping("/{id}")
     void delete(@PathVariable Integer id) {
-        iAttendanceStatsBiz.delete(id);
+        iViewStatisticsBiz.delete(id);
     }
 
     @GetMapping("/{id}")
     ResponseEntity getOne(@PathVariable Integer id) {
-        return new ResponseEntity(iAttendanceStatsBiz.getOne(id), HttpStatus.OK);
+        return new ResponseEntity(iViewStatisticsBiz.getOne(id), HttpStatus.OK);
     }
 
     @GetMapping("/")
-    ResponseEntity<Map<String, List<AttendanceStats>>> getAll() {
-        Map<String, List<AttendanceStats>> result = new HashMap<>();
-        result.put("AttendanceStats", iAttendanceStatsBiz.getAll());
+    ResponseEntity<Map<String, List<ViewStatistics>>> getAll() {
+        Map<String, List<ViewStatistics>> result = new HashMap<>();
+        result.put("ViewStatistics", iViewStatisticsBiz.getAll());
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

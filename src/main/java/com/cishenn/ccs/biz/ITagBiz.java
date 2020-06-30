@@ -7,11 +7,11 @@ import java.util.List;
 public interface ITagBiz {
     void save(Tag tag);
 
-    void update(Integer id, Tag tag);
+    void update(Integer creatorId, Tag tag);
 
-    void delete(Integer id);
+    void delete(Integer creatorId);
 
-    Tag getOne(Integer id);
+    Tag getOne(Integer creatorId);
 
     List<Tag> getAll();
 }

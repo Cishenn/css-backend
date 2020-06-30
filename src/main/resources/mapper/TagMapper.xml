@@ -4,25 +4,25 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cishenn.ccs.dao.TagMapper">
     <insert id="save" parameterType="com.cishenn.ccs.entity.Tag">
-        insert into tag(creatorId,tag_name,color,type,usedTimes,createTime)
-        values(#{creatorId},#{name},#{color},#{type},#{usedTimes},#{createTime})
+        insert into tag(creatorId,tag_name,color, type,usedTimes,createTime)
+        values(#{tag.creatorId},#{tag.name},#{tag.color},#{tag.type},#{tag.usedTimes},#{tag.createTime})
     </insert>
 <!--花括号中的id需要修改格式-->
     <update id="update">
         update tag set
           tag_name = #{tag.name},
           color=#{tag.color}
-        where creatorId = #{id};
+        where creatorId = #{creatorId};
     </update>
 
     <delete id="delete" parameterType="com.cishenn.ccs.entity.Tag">
         delete from tag
-        where creatorID=#{id}
+        where creatorID=#{creatorId}
     </delete>
 
     <select id="getOne" resultType="com.cishenn.ccs.entity.Tag">
         select * from tag
-        where creatorID=#{id}
+        where creatorID=#{creatorId}
     </select>
 
     <select id="getAll" resultType="com.cishenn.ccs.entity.Tag">
