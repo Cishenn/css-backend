@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cishenn.ccs.dao.SystemMessageMapper">
+
+    <insert id="save" parameterType="SystemMessage">
+         --  杨老板组数据库字段使用的是驼峰命名，如果我们不适用这种命名方法，相应位置需要改动
+        insert into system_message(id,title,createTime,content)
+        values(#{id}, #{title}, #{createTime}, #{content})
+    </insert>
+    <update id="update" parameterType="SystemMessage">
+        update system_message set
+            id = #{systemMessage.id},
+            title = #{systemMessage.title},
+            createTime = #{systemMessage.createTime},
+            content = #{systemMessage.content}
+        where id = #{id};
+        --此处where有问题,待解决
+    </update>
+    <delete id="delete" parameterType="SystemMessage">
+        delete from system_message
+        where id = #{id};
+    </delete>
+    <select id="getOne" resultType="SystemMessage">
+        select * from system_message
+        where id = #{id};
+    </select>
+    <select id="getAll" resultType="SystemMessage">
+        select * from system_message
+    </select>
+
+
+</mapper>
+
+
