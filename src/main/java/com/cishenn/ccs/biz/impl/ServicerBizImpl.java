@@ -5,9 +5,11 @@ import com.cishenn.ccs.dao.ServicerMapper;
 import com.cishenn.ccs.entity.Servicer;
 import com.cishenn.ccs.exception.ServicerException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ServicerBizImpl implements IServicerBiz {
     @Autowired
     ServicerMapper servicerMapper;

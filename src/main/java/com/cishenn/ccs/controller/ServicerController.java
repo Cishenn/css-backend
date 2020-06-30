@@ -22,17 +22,17 @@ public class ServicerController {
         iServicerBiz.save(servicer);
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     void delete(@PathVariable Integer id){
         iServicerBiz.delete(id);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     void update(@PathVariable Integer id,@RequestBody Servicer servicer){
         iServicerBiz.update(id,servicer);
     }
 
-    @GetMapping("/")
+    @GetMapping("/{id}")
     ResponseEntity<Servicer> getOne(@PathVariable Integer id){
         return new ResponseEntity<>(iServicerBiz.getOne(id), HttpStatus.OK);
     }
