@@ -1,18 +1,16 @@
 package com.cishenn.ccs.biz;
 
 import com.cishenn.ccs.entity.CommonWord;
-import com.cishenn.ccs.entity.Servicer;
-
 import java.util.List;
 
 public interface ICommonWordBiz {
-    void save(CommonWord servicer);
+    void save(CommonWord commonWord);
 
-    void delete(Integer id);
+    void delete(Integer creatorId);
 
-    void update(Integer id, Servicer servicer);
+    void update(Integer creatorId, CommonWord commonWord);
 
-    Object getOne(Integer id);
+    CommonWord getOne(Integer creatorId);
 
-    List<Servicer> getAll();
+    List<CommonWord> getAll();
 }

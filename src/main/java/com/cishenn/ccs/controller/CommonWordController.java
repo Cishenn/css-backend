@@ -2,7 +2,6 @@ package com.cishenn.ccs.controller;
 
 import com.cishenn.ccs.biz.ICommonWordBiz;
 import com.cishenn.ccs.entity.CommonWord;
-import com.cishenn.ccs.entity.Servicer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,24 +23,25 @@ public class CommonWordController {
     }
 
     @DeleteMapping("/{creatorId}")
-    void delete(@PathVariable Integer id){
-        iCommonWordBiz.delete(id);
+    void delete(@PathVariable Integer creatorId){
+
+        iCommonWordBiz.delete(creatorId);
     }
 
-    @PutMapping("/{id}")
-    void update(@PathVariable Integer id,@RequestBody Servicer servicer){
-        iCommonWordBiz.update(id,servicer);
+    @PutMapping("/{creatorId}")
+    void update(@PathVariable Integer creatorId,@RequestBody CommonWord commonWord){
+        iCommonWordBiz.update(creatorId,commonWord);
     }
 
-    @GetMapping("/{id}")
-    ResponseEntity<Servicer> getOne(@PathVariable Integer id){
-        return new ResponseEntity<>(iCommonWordBiz.getOne(id), HttpStatus.OK);
+    @GetMapping("/{creatorId}")
+    ResponseEntity<CommonWord> getOne(@PathVariable Integer creatorId){
+        return new ResponseEntity<>(iCommonWordBiz.getOne(creatorId), HttpStatus.OK);
     }
 
     @GetMapping("/")
-    ResponseEntity<Map<String, List<Servicer>>> getAll(){
-        Map<String, List<Servicer>> result=new HashMap();
-        result.put("servicers",iCommonWordBiz.getAll());
+    ResponseEntity<Map<String, List<CommonWord>>> getAll(){
+        Map<String, List<CommonWord>> result=new HashMap();
+        result.put("common_word",iCommonWordBiz.getAll());
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
 

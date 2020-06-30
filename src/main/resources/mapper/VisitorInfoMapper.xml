@@ -9,9 +9,8 @@
         insert into visitor_info(ip,visitorName,terminal,browser,screenSize,device,customerServiceId,state,visitDuration)
         values(#{ip}, #{visitorName}, #{terminal}, #{browser}, #{screenSize}, #{device}, #{customerServiceId}, #{state}, #{visitDuration})
     </insert>
-    <update id="update">
+    <update id="update" parameterType="VisitorInfo">
         update visitor_info set
-        --         花括号中的对象好像没有声明
             ip = #{visitorInfo.ip},
             visitorName = #{visitorInfo.visotorName},
             terminal = #{visitorInfo.terminal},
