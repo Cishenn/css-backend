@@ -7,7 +7,7 @@
         insert into attendance_statistics(id)
         values(#{id})
     </insert>
-    <update id="update">
+    <update id="update" parameterType="com.cishenn.ccs.entity.AttendanceStats">
         update attendance_statistics set
         busytime=#{busytime}
         where id=#{id}
