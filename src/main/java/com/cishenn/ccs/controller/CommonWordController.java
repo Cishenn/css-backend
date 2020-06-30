@@ -1,6 +1,7 @@
 package com.cishenn.ccs.controller;
 
 import com.cishenn.ccs.biz.ICommonWordBiz;
+import com.cishenn.ccs.entity.CommonWord;
 import com.cishenn.ccs.entity.Servicer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,11 +19,11 @@ public class CommonWordController {
     ICommonWordBiz iCommonWordBiz;
 
     @PostMapping("/")
-    void save(@RequestBody Servicer servicer){
-        iCommonWordBiz.save(servicer);
+    void save(@RequestBody CommonWord commonWord){
+        iCommonWordBiz.save(commonWord);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{creatorId}")
     void delete(@PathVariable Integer id){
         iCommonWordBiz.delete(id);
     }
