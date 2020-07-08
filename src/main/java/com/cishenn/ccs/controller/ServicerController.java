@@ -13,11 +13,12 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/servicer")
+@CrossOrigin
 public class ServicerController {
     @Autowired
     IServicerBiz iServicerBiz;
 
-    @PostMapping("/")
+    @PostMapping("/login")
     void save(@RequestBody Servicer servicer){
         iServicerBiz.save(servicer);
     }
