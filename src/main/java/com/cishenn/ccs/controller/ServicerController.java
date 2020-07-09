@@ -2,6 +2,7 @@ package com.cishenn.ccs.controller;
 
 import com.cishenn.ccs.biz.IServicerBiz;
 import com.cishenn.ccs.entity.Servicer;
+import com.cishenn.ccs.uitls.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,19 @@ public class ServicerController {
     IServicerBiz iServicerBiz;
 
     @PostMapping("/login")
-    void save(@RequestBody Servicer servicer){
+    public Result login(@RequestBody Servicer servicer){
+        Servicer loginServicer = iServicerBiz.login(servicer);
+        if(loginServicer!=null){
+            return Result.ok(loginServicer);
+        }else{
+            return Result.error("通过不了->LoginCtrl中没有获得biz的返回值");
+        }
+    }
+
+    @PostMapping("/register")
+    public Result save(@RequestBody Servicer servicer){
         iServicerBiz.save(servicer);
+        return Result.ok("注册成功啦~~");
     }
 
     @DeleteMapping("/{id}")

@@ -14,4 +14,6 @@ public interface IServicerBiz {
     Servicer getOne(Integer id);
 
     List<Servicer> getAll();
+
+    Servicer login(Servicer servicer);
 }

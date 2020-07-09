@@ -52,4 +52,10 @@ public class ServicerBizImpl implements IServicerBiz {
     public List<Servicer> getAll() {
         return servicerMapper.getAll();
     }
+
+    @Override
+    public Servicer login(Servicer servicer) {
+
+        return servicerMapper.login(servicer);
+    }
 }
