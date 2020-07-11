@@ -7,7 +7,14 @@ import java.util.List;
 
 @Mapper
 public interface SessionMapper {
-    int save(Session session);
+
+    List<Session> getSessionList(Integer customerServiceId, Integer type, Integer pageNum);
+
+    int save(Session cs_session);
+
+    void updateMsgCount(String sessionId, String type);
+
+    void closeSessionBy(String userName, String type);
 
     int delete(Integer id);
 
