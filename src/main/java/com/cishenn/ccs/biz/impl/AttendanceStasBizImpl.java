@@ -6,6 +6,8 @@ import com.cishenn.ccs.entity.AttendanceStats;
 import com.cishenn.ccs.entity.Customer;
 import com.cishenn.ccs.exception.AttendanceStatsException;
 import com.cishenn.ccs.exception.CustomerException;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +62,12 @@ public class AttendanceStasBizImpl implements IAttendanceStatsBiz {
     @Override
     public List<AttendanceStats> getAll() {
         return attendanceStatsMapper.getAll();
+    }
+
+    @Override
+    public PageInfo<AttendanceStats> getAttendanceList(Integer id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        PageInfo pageInfo = new PageInfo(attendanceStatsMapper.getAll());
+        return pageInfo;
     }
 }

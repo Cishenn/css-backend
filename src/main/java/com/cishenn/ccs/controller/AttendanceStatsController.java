@@ -4,6 +4,8 @@ import com.cishenn.ccs.biz.IAttendanceStatsBiz;
 import com.cishenn.ccs.biz.IBlacklistBiz;
 import com.cishenn.ccs.entity.AttendanceStats;
 import com.cishenn.ccs.entity.Blacklist;
+import com.cishenn.ccs.uitls.Result;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/attendance_stats")
+@CrossOrigin
 public class AttendanceStatsController {
     @Autowired
     IAttendanceStatsBiz iAttendanceStatsBiz;
@@ -31,14 +34,22 @@ public class AttendanceStatsController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity getOne(@PathVariable Integer id) {
-        return new ResponseEntity(iAttendanceStatsBiz.getOne(id), HttpStatus.OK);
+    Result getOne(@PathVariable Integer id) {
+        return Result.ok(iAttendanceStatsBiz.getOne(id));
     }
 
     @GetMapping("/")
-    ResponseEntity<Map<String, List<AttendanceStats>>> getAll() {
+    Result getAll() {
         Map<String, List<AttendanceStats>> result = new HashMap<>();
         result.put("AttendanceStats", iAttendanceStatsBiz.getAll());
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return Result.ok(result);
+    }
+
+    @GetMapping("/page")
+    public PageInfo currentAttendance(Integer id,
+                                      @RequestParam(required = false,defaultValue ="1")int currentPage,
+                                      @RequestParam(required = false,defaultValue ="10")int pageSize){
+        PageInfo<AttendanceStats> pageInfo = iAttendanceStatsBiz.getAttendanceList(id,currentPage,pageSize);
+        return pageInfo;
     }
 }
