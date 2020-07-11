@@ -9,33 +9,33 @@
 <!--        insert into servicer(phone, password, state, avator, email, nickName, realName, servicerPhone, totalOnlineTime, onlineTimeBegin, onlineTimeEnd, sessionCount, msgCount, serviceGroup, serviceRole)-->
 <!--        values(#{phone}, #{password}, #{state}, #{avator}, #{email}, #{nickName}, #{realName}, #{servicerPhone}, #{totalOnlineTime}, #{onlineTimeBegin}, #{onlineTimeEnd}, #{sessionCount}, #{msgCount}, #{serviceGroup}, #{serviceRole})-->
 <!--    </insert>-->
-    <update id="update">
---         对象的写法好像是servicer,跟函数中的参数名保持一致
-        update servicer set
-            phone = #{customerService.phone},
-            password = #{customerService.password},
-            avator = #{customerService.avator},
-            email = #{customerService.email},
-            nickName = #{customerService.nickName},
-            realName = #{customerService.realName},
-            servicerPhone = #{customerService.servicerPhone},
-            customerServiceId = #{customerService.totalOnlineTime},--此处好像有问题
-            totalOnlineTime = #{customerService.totalOnlineTime},
-            onlineTimeBegin = #{customerService.onlineTimeBegin},
-            onlineTimeEnd = #{customerService.onlineTimeEnd},
-            sessionCount = #{customerService.sessionCount},
-            msgCount = #{customerService.msgCount},
-            serviceGroup = #{customerService.serviceGroup},
-            serviceRole = #{customerService.serviceRole}
+<!-- 对象的写法好像是servicer,跟函数中的参数名保持一致 -->
+    <update id="update" parameterType="com.cishenn.ccs.entity.Servicer">
+
+        update customer_service set
+            phone = #{servicer.phone},
+            password = #{servicer.password},
+            email = #{servicer.email},
+            nickName = #{servicer.nickName},
+            realName = #{servicer.realName}
         where customerServiceId = #{id};
+        <!--      servicerPhone = #{servicer.servicerPhone}
+      avatar = #{servicer.avatar},
+      totalOnlineTime = #{servicer.totalOnlineTime},
+      onlineTimeBegin = #{servicer.onlineTimeBegin},
+      onlineTimeEnd = #{servicer.onlineTimeEnd},
+      sessionCount = #{servicer.sessionCount},
+      msgCount = #{servicer.msgCount},
+      serviceGroup = #{servicer.serviceGroup},
+      serviceRole = #{servicer.serviceRole} -->
     </update>
     <delete id="delete" parameterType="com.cishenn.ccs.entity.Servicer">
         delete from servicer
-        where customerServiceId = #{id};
+        where customerServiceId = #{servicerId};
     </delete>
     <select id="getOne" resultType="com.cishenn.ccs.entity.Servicer">
         select * from servicer
-        where customerServiceId = #{id};
+        where customerServiceId = #{servicerId};
     </select>
     <select id="getAll" resultType="com.cishenn.ccs.entity.Servicer">
         select * from servicer

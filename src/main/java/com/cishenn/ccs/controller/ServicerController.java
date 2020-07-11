@@ -41,8 +41,9 @@ public class ServicerController {
     }
 
     @PutMapping("/{id}")
-    void update(@PathVariable Integer id,@RequestBody Servicer servicer){
+    public Result update(@PathVariable Integer id,@RequestBody Servicer servicer){
         iServicerBiz.update(id,servicer);
+        return Result.ok("更新成功");
     }
 
     @GetMapping("/{id}")
