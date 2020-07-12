@@ -58,7 +58,7 @@ public class AliyunOssFileUploadImpl implements IFileUploadBiz {
             }
             String originalFilename = image.getOriginalFilename();
             ObjectMetadata metadata = new ObjectMetadata();
-            String archiveFilename = getArchiveFilename(originalFilename, "images/");
+            String archiveFilename = getArchiveFilename(originalFilename, "assets/");
             return doUploadFile(archiveFilename, image.getInputStream(), metadata);
         } catch (IOException e) {
             throw new FileUploadException("文件上传失败", e);
