@@ -6,6 +6,8 @@ import com.cishenn.ccs.entity.AttendanceStats;
 import com.cishenn.ccs.entity.Customer;
 import com.cishenn.ccs.exception.AttendanceStatsException;
 import com.cishenn.ccs.exception.CustomerException;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,4 +63,36 @@ public class AttendanceStasBizImpl implements IAttendanceStatsBiz {
     public List<AttendanceStats> getAll() {
         return attendanceStatsMapper.getAll();
     }
+
+    @Override
+    public PageInfo<AttendanceStats> getAttendanceList(Integer id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        PageInfo pageInfo = new PageInfo(attendanceStatsMapper.getAll());
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo<AttendanceStats> getSelectedAttendanceList(String nickName, String serviceGroup, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        PageInfo pageInfo = null;
+        if(nickName.equals("全部客服") && serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(attendanceStatsMapper.getAll());
+        }else if(nickName.equals("全部客服") && !serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(attendanceStatsMapper.getByGroup(serviceGroup));
+        }else if(!nickName.equals("全部客服") && serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(attendanceStatsMapper.getByServicer(nickName));
+        }else if(!nickName.equals("全部客服") && !serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(attendanceStatsMapper.getSelected(nickName,serviceGroup));
+        }
+        return pageInfo;
+    }
+
+//    @Override
+//    public PageInfo<AttendanceStats> getAttendanceListByGroup(String serviceGroup, int currentPage, int pageSize) {
+//        PageHelper.startPage(currentPage,pageSize);
+//        PageInfo pageInfo = new PageInfo(attendanceStatsMapper.getByGroup(serviceGroup));
+//        return pageInfo;
+//    }
+
+
 }

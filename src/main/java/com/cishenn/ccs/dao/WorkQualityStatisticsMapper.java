@@ -17,4 +17,10 @@ public interface WorkQualityStatisticsMapper {
     WorkQualityStatistics getOne(Integer id);
 
     List<WorkQualityStatistics> getAll();
+
+    List getByGroup(String serviceGroup);
+
+    List getByServicer(String nickName);
+
+    List getSelected(String nickName, String serviceGroup);
 }

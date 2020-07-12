@@ -1,5 +1,8 @@
 package com.cishenn.ccs.entity;
 
+import lombok.Data;
+
+@Data
 public class WorkQualityStatistics {
     private Integer id;
     private String nickName;

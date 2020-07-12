@@ -17,4 +17,11 @@ public interface AttendanceStatsMapper {
     AttendanceStats getOne(Integer id);
 
     List<AttendanceStats> getAll();
+
+    List getSelected(String nickName,String serviceGroup);
+
+    List getByGroup(String serviceGroup);
+
+    List getByServicer(String nickName);
+
 }
