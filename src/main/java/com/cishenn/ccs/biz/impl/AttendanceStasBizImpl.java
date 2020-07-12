@@ -70,4 +70,29 @@ public class AttendanceStasBizImpl implements IAttendanceStatsBiz {
         PageInfo pageInfo = new PageInfo(attendanceStatsMapper.getAll());
         return pageInfo;
     }
+
+    @Override
+    public PageInfo<AttendanceStats> getSelectedAttendanceList(String nickName, String serviceGroup, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        PageInfo pageInfo = null;
+        if(nickName.equals("全部客服") && serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(attendanceStatsMapper.getAll());
+        }else if(nickName.equals("全部客服") && !serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(attendanceStatsMapper.getByGroup(serviceGroup));
+        }else if(!nickName.equals("全部客服") && serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(attendanceStatsMapper.getByServicer(nickName));
+        }else if(!nickName.equals("全部客服") && !serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(attendanceStatsMapper.getSelected(nickName,serviceGroup));
+        }
+        return pageInfo;
+    }
+
+//    @Override
+//    public PageInfo<AttendanceStats> getAttendanceListByGroup(String serviceGroup, int currentPage, int pageSize) {
+//        PageHelper.startPage(currentPage,pageSize);
+//        PageInfo pageInfo = new PageInfo(attendanceStatsMapper.getByGroup(serviceGroup));
+//        return pageInfo;
+//    }
+
+
 }

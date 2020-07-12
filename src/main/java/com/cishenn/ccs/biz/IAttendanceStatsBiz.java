@@ -19,4 +19,8 @@ public interface IAttendanceStatsBiz {
     List<AttendanceStats> getAll();
 
     PageInfo<AttendanceStats> getAttendanceList(Integer id,int currentPage,int pageSize);
+
+    PageInfo<AttendanceStats> getSelectedAttendanceList(String nickName, String serviceGroup, int currentPage, int pageSize);
+
+//    PageInfo<AttendanceStats> getAttendanceListByGroup(String serviceGroup, int currentPage, int pageSize);
 }

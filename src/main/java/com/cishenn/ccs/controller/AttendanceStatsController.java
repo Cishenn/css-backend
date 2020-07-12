@@ -52,4 +52,21 @@ public class AttendanceStatsController {
         PageInfo<AttendanceStats> pageInfo = iAttendanceStatsBiz.getAttendanceList(id,currentPage,pageSize);
         return pageInfo;
     }
+
+    @GetMapping("/selectPage")
+    public PageInfo currentSelectedAttendance(String nickName,
+                                                String serviceGroup,
+                                                @RequestParam(required = false,defaultValue ="1")int currentPage,
+                                                @RequestParam(required = false,defaultValue ="10")int pageSize){
+        PageInfo<AttendanceStats> pageInfo = iAttendanceStatsBiz.getSelectedAttendanceList(nickName,serviceGroup,currentPage,pageSize);
+        return pageInfo;
+    }
+
+//    @GetMapping("/groupPage")
+//    public PageInfo currentAttendanceByGroup(String serviceGroup,
+//                                          @RequestParam(required = false,defaultValue ="1")int currentPage,
+//                                          @RequestParam(required = false,defaultValue ="10")int pageSize){
+//        PageInfo<AttendanceStats> pageInfo = iAttendanceStatsBiz.getAttendanceListByGroup(serviceGroup,currentPage,pageSize);
+//        return pageInfo;
+//    }
 }

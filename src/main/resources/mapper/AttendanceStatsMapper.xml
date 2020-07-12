@@ -24,4 +24,21 @@
     <select id="getAll" resultType="com.cishenn.ccs.entity.AttendanceStats">
         select * from attendance_statistics
     </select>
+    <select id="getSelected" resultType="com.cishenn.ccs.entity.AttendanceStats">
+        select * from attendance_statistics
+        where nickName=#{nickName}
+        and nickName in(
+        select nickName from customer_service
+        where serviceGroup = #{serviceGroup})
+    </select>
+    <select id="getByServicer" resultType="com.cishenn.ccs.entity.AttendanceStats">
+        select * from attendance_statistics
+        where nickName=#{nickName}
+    </select>
+    <select id="getByGroup" resultType="com.cishenn.ccs.entity.AttendanceStats">
+        select * from attendance_statistics
+        where nickName in(
+        select nickName from customer_service
+        where serviceGroup = #{serviceGroup})
+    </select>
 </mapper>
