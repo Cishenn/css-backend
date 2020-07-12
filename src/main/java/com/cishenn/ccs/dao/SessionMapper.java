@@ -1,6 +1,7 @@
 package com.cishenn.ccs.dao;
 
 import com.cishenn.ccs.entity.Session;
+import com.cishenn.ccs.entity.SessionWithLatestMessage;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface SessionMapper {
     void updateMsgCount(String sessionId, String type);
 
     void closeSessionBy(String userName, String type);
+
+    List<SessionWithLatestMessage> getWithActiveStatusWithLatestMessage(Integer customerServiceId, Boolean activeStatus);
 
     int delete(Integer id);
 

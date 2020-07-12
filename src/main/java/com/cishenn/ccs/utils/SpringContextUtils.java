@@ -1,4 +1,4 @@
-package com.cishenn.ccs.uitls;
+package com.cishenn.ccs.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

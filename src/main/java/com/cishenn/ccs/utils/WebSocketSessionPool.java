@@ -1,4 +1,4 @@
-package com.cishenn.ccs.uitls;
+package com.cishenn.ccs.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;

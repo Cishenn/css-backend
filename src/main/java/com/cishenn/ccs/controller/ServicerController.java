@@ -2,7 +2,7 @@ package com.cishenn.ccs.controller;
 
 import com.cishenn.ccs.biz.IServicerBiz;
 import com.cishenn.ccs.entity.Servicer;
-import com.cishenn.ccs.uitls.Result;
+import com.cishenn.ccs.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

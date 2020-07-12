@@ -1,6 +1,6 @@
 package com.cishenn.ccs.websocket;
 
-import com.cishenn.ccs.uitls.WebSocketSessionPool;
+import com.cishenn.ccs.utils.WebSocketSessionPool;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;

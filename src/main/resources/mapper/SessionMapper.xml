@@ -42,4 +42,21 @@
             and finish_time is null
         </if>
     </select>
+<!--  在这里肯定有问题  -->
+    <select id="getWithActiveStatusWithLatestMessage"
+            resultType="com.cishenn.ccs.entity.SessionWithLatestMessage">
+        SELECT session.*,
+               session_message.sendTime AS latestMessageTime,
+               session_message.content AS latestMessageContent
+        FROM session
+                 LEFT JOIN session_message ON session.sessionId = session_message.sessionId
+        WHERE session.customerServiceId = #{customerServiceId}
+        AND session.active = #{activeStatus}
+        AND ((session.sessionId, session_message.sendTime) IN (
+            SELECT sessionId, MAX(sendTime)
+            FROM session_message
+            GROUP BY sessionId
+        ) OR session_message.sendTime is NULL)
+        ORDER BY session_message.sendTime DESC
+    </select>
 </mapper>
