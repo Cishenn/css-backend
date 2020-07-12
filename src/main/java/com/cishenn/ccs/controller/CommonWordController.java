@@ -2,6 +2,7 @@ package com.cishenn.ccs.controller;
 
 import com.cishenn.ccs.biz.ICommonWordBiz;
 import com.cishenn.ccs.entity.CommonWord;
+import com.cishenn.ccs.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/commonword")
+@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class CommonWordController {
     @Autowired
     ICommonWordBiz iCommonWordBiz;
@@ -39,10 +41,10 @@ public class CommonWordController {
     }
 
     @GetMapping("/")
-    ResponseEntity<Map<String, List<CommonWord>>> getAll(){
+    public Result getAll(){
         Map<String, List<CommonWord>> result=new HashMap();
         result.put("common_word",iCommonWordBiz.getAll());
-        return new ResponseEntity<>(result,HttpStatus.OK);
+        return Result.ok(result);
     }
 
 }
