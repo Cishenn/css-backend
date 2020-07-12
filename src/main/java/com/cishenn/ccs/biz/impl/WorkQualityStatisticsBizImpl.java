@@ -8,6 +8,8 @@ import com.cishenn.ccs.entity.Notice;
 import com.cishenn.ccs.entity.WorkQualityStatistics;
 import com.cishenn.ccs.exception.NoticeException;
 import com.cishenn.ccs.exception.WorkQualityStatisticsException;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,5 +59,28 @@ public class WorkQualityStatisticsBizImpl implements IWorkQualityStatisticsBiz {
     @Override
     public List<WorkQualityStatistics> getAll() {
         return workQualityStatisticsMapper.getAll();
+    }
+
+    @Override
+    public PageInfo<WorkQualityStatistics> getWorkQualityList(Integer id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        PageInfo pageInfo = new PageInfo(workQualityStatisticsMapper.getAll());
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo<WorkQualityStatistics> getSelectedWorkQualityList(String nickName, String serviceGroup, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        PageInfo pageInfo = null;
+        if(nickName.equals("全部客服") && serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(workQualityStatisticsMapper.getAll());
+        }else if(nickName.equals("全部客服") && !serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(workQualityStatisticsMapper.getByGroup(serviceGroup));
+        }else if(!nickName.equals("全部客服") && serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(workQualityStatisticsMapper.getByServicer(nickName));
+        }else if(!nickName.equals("全部客服") && !serviceGroup.equals("全部客服组")){
+            pageInfo = new PageInfo(workQualityStatisticsMapper.getSelected(nickName,serviceGroup));
+        }
+        return pageInfo;
     }
 }

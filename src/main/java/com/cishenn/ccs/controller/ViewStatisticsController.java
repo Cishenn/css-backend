@@ -4,6 +4,7 @@ import com.cishenn.ccs.biz.IAttendanceStatsBiz;
 import com.cishenn.ccs.biz.IViewStatisticsBiz;
 import com.cishenn.ccs.entity.AttendanceStats;
 import com.cishenn.ccs.entity.ViewStatistics;
+import com.cishenn.ccs.uitls.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/view_statistics")
+@CrossOrigin
 public class ViewStatisticsController {
     @Autowired
     IViewStatisticsBiz iViewStatisticsBiz;
@@ -31,14 +33,14 @@ public class ViewStatisticsController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity getOne(@PathVariable Integer id) {
-        return new ResponseEntity(iViewStatisticsBiz.getOne(id), HttpStatus.OK);
+    Result getOne(@PathVariable Integer id) {
+        return Result.ok(iViewStatisticsBiz.getOne(id));
     }
 
     @GetMapping("/")
-    ResponseEntity<Map<String, List<ViewStatistics>>> getAll() {
+    Result getAll() {
         Map<String, List<ViewStatistics>> result = new HashMap<>();
         result.put("ViewStatistics", iViewStatisticsBiz.getAll());
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return Result.ok(result);
     }
 }
