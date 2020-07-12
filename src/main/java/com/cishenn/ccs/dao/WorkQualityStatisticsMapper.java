@@ -23,4 +23,8 @@ public interface WorkQualityStatisticsMapper {
     List getByServicer(String nickName);
 
     List getSelected(String nickName, String serviceGroup);
+
+    List<String> getServicerOptions();
+
+    List<String> getGroupOptions();
 }
