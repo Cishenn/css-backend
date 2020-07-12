@@ -26,6 +26,10 @@
         select * from common_word
         where creatorId = #{creatorId};
     </select>
+    <select id="getOneLib" resultType="CommonWord">
+        select * from common_word
+        where lib = #{lib};
+    </select>
     <select id="getAll" resultType="CommonWord">
         select * from common_word
     </select>

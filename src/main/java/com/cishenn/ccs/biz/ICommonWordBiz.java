@@ -12,5 +12,7 @@ public interface ICommonWordBiz {
 
     CommonWord getOne(Integer creatorId);
 
+    List<CommonWord> getOneLib(String lib);
+
     List<CommonWord> getAll();
 }

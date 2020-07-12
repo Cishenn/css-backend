@@ -48,6 +48,15 @@ public class CommonWordBizImpl implements ICommonWordBiz {
     }
 
     @Override
+    public List<CommonWord> getOneLib(String lib) {
+        List<CommonWord> result = commonWordMapper.getOneLib(lib);
+        if(result==null){
+            throw new CommonWordException("Get OneLib CommonWord Entity Error(maybe no such entity");
+        }
+        return result;
+    }
+
+    @Override
     public List<CommonWord> getAll() {
 
         return commonWordMapper.getAll();

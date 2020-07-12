@@ -13,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/commonword")
+@CrossOrigin
 public class CommonWordController {
     @Autowired
     ICommonWordBiz iCommonWordBiz;
@@ -36,6 +37,13 @@ public class CommonWordController {
     @GetMapping("/{creatorId}")
     ResponseEntity<CommonWord> getOne(@PathVariable Integer creatorId){
         return new ResponseEntity<>(iCommonWordBiz.getOne(creatorId), HttpStatus.OK);
+    }
+
+    @GetMapping("/onelib")
+    ResponseEntity<Map<String, List<CommonWord>>> getOneType(String lib){
+        Map<String, List<CommonWord>> result=new HashMap();
+        result.put("common_word",iCommonWordBiz.getOneLib(lib));
+        return new ResponseEntity<>(result,HttpStatus.OK);
     }
 
     @GetMapping("/")
