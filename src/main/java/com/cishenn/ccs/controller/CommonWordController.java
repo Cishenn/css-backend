@@ -12,15 +12,16 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/commonword")
+@RequestMapping(value = "/commonword")
 @CrossOrigin
 public class CommonWordController {
     @Autowired
     ICommonWordBiz iCommonWordBiz;
 
-    @PostMapping("/")
-    void save(@RequestBody CommonWord commonWord){
+    @PostMapping("/inser")
+    int save(@RequestBody CommonWord commonWord){
         iCommonWordBiz.save(commonWord);
+        return 0;
     }
 
     @DeleteMapping("/{creatorId}")

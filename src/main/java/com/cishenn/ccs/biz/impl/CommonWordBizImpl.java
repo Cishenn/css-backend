@@ -15,11 +15,12 @@ public class CommonWordBizImpl implements ICommonWordBiz {
     CommonWordMapper commonWordMapper;
 
     @Override
-    public void save(CommonWord commonWord) {
+    public int save(CommonWord commonWord) {
         int result=commonWordMapper.save(commonWord);
         if(result==0){
             throw new CommonWordException("Create CommonWord Entity Error");
         }
+        return 0;
     }
 
     @Override

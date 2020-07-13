@@ -4,7 +4,7 @@ import com.cishenn.ccs.entity.CommonWord;
 import java.util.List;
 
 public interface ICommonWordBiz {
-    void save(CommonWord commonWord);
+    int save(CommonWord commonWord);
 
     void delete(Integer creatorId);
 
