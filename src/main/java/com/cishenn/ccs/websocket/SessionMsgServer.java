@@ -1,5 +1,6 @@
 package com.cishenn.ccs.websocket;
 
+import com.cishenn.ccs.dao.SessionMapper;
 import com.cishenn.ccs.dao.SessionMsgMapper;
 import com.cishenn.ccs.entity.SessionMsg;
 import com.cishenn.ccs.utils.Result;
@@ -26,12 +27,24 @@ public class SessionMsgServer {
 
     private SessionMsgMapper sessionMsgMapper;
 
+    private SessionMapper sessionMapper;
+
     public SessionMsgServer() {
         sessionMsgMapper = SpringContextUtils.getBean(SessionMsgMapper.class);
+        sessionMapper = SpringContextUtils.getBean(SessionMapper.class);
     }
 
     @OnOpen
     public void onOpen(@PathParam("sessionId") Integer sessionId, Session session) {
+        try {
+            if (sessionMapper.getOne(sessionId) == null) {
+                session.getBasicRemote().sendText(new ObjectMapper().writeValueAsString(Result.error("会话 id " + sessionId + " 不存在")));
+                session.close();
+                return;
+            }
+        } catch (Exception e) {
+            logThrowable(e);
+        }
         if (!sessionPools.containsKey(sessionId)) {
             sessionPools.put(sessionId, new WebSocketSessionPool<>());
         }
