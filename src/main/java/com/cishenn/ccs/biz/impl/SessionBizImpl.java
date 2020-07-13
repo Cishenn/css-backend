@@ -16,11 +16,23 @@ public class SessionBizImpl implements ISessionBiz {
     SessionMapper sessionMapper;
 
     @Override
-    public void save(Session session) {
-        int result=sessionMapper.save(session);
-        if(result==0){
-            throw new SessionException("Save Session Entity Error");
-        }
+    public List<Session> getSessionList(Integer customerServiceId, Integer type, Integer pageNum) {
+        return sessionMapper.getSessionList(customerServiceId,type,pageNum);
+    }
+
+    @Override
+    public int save(Session cs_session) {
+        return sessionMapper.save(cs_session);
+    }
+
+    @Override
+    public void updateMsgCount(String sessionId, String type) {
+        sessionMapper.updateMsgCount(sessionId,type);
+    }
+
+    @Override
+    public void closeSessionBy(String userName,String type) {
+        sessionMapper.closeSessionBy(userName, type);
     }
 
     @Override

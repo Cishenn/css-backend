@@ -2,6 +2,7 @@ package com.cishenn.ccs.dao;
 
 import com.cishenn.ccs.entity.AttendanceStats;
 import com.cishenn.ccs.entity.Customer;
+import com.cishenn.ccs.entity.ElOption;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -24,4 +25,7 @@ public interface AttendanceStatsMapper {
 
     List getByServicer(String nickName);
 
+    List getServicerOptions();
+
+    List getGroupOptions();
 }

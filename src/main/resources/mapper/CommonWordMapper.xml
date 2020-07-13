@@ -9,7 +9,7 @@
         insert into common_word(content,lib, type)
         values(#{content}, #{lib}, #{type})
     </insert>
-    <update id="update" parameterType="CommonWord">
+    <update id="update" parameterType="com.cishenn.ccs.entity.CommonWord">
         update common_word set
             content = #{commonWord.content},
             lib = #{commonWord.lib},
@@ -18,11 +18,11 @@
         where creatorId = #{creatorId};
         --没有自增对象，此处where可能有问题
     </update>
-    <delete id="delete" parameterType="CommonWord">
+    <delete id="delete" parameterType="com.cishenn.ccs.entity.CommonWord">
         delete from common_word
         where creatorId = #{creatorId};
     </delete>
-    <select id="getOne" resultType="CommonWord">
+    <select id="getOne" resultType="com.cishenn.ccs.entity.CommonWord">
         select * from common_word
         where creatorId = #{creatorId};
     </select>

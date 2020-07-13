@@ -15,7 +15,7 @@
     </update>
     <delete id="delete" parameterType="com.cishenn.ccs.entity.Notice">
         delete from notice
-        where id=#{id}
+        where type=1 or 2
     </delete>
     <select id="getOne" resultType="com.cishenn.ccs.entity.Notice">
         select * from notice

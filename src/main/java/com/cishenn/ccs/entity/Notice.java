@@ -11,4 +11,5 @@ public class Notice {
     private String content;
     private Integer creatorId;
     private Date createTime;
+    private Integer type;
 }

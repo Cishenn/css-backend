@@ -14,7 +14,7 @@ public class Servicer {
     private String nickName;
     private String realName;
     private String servicerPhone;
-    private Integer servicerId;
+    private Integer customerServiceId;
     private Integer totalOnlineTime;
     private Date onlineTimeBegin;
     private Date onlineTimeEnd;

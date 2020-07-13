@@ -4,7 +4,7 @@ import com.cishenn.ccs.biz.IAttendanceStatsBiz;
 import com.cishenn.ccs.biz.IViewStatisticsBiz;
 import com.cishenn.ccs.entity.AttendanceStats;
 import com.cishenn.ccs.entity.ViewStatistics;
-import com.cishenn.ccs.uitls.Result;
+import com.cishenn.ccs.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

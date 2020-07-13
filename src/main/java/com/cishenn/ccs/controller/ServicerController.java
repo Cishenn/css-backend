@@ -2,7 +2,7 @@ package com.cishenn.ccs.controller;
 
 import com.cishenn.ccs.biz.IServicerBiz;
 import com.cishenn.ccs.entity.Servicer;
-import com.cishenn.ccs.uitls.Result;
+import com.cishenn.ccs.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,13 +41,14 @@ public class ServicerController {
     }
 
     @PutMapping("/{id}")
-    void update(@PathVariable Integer id,@RequestBody Servicer servicer){
+    public Result update(@PathVariable Integer id,@RequestBody Servicer servicer){
         iServicerBiz.update(id,servicer);
+        return Result.ok("更新成功");
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Servicer> getOne(@PathVariable Integer id){
-        return new ResponseEntity<>(iServicerBiz.getOne(id), HttpStatus.OK);
+    public Result getOne(@PathVariable Integer id){
+        return Result.ok(iServicerBiz.getOne(id));
     }
 
     @GetMapping("/")
