@@ -52,4 +52,36 @@
         where customerServiceId in(
         select distinct customerServiceId from work_order))
     </select>
+    <select id="getPriorityOptionsWith" resultType="java.lang.String">
+        select distinct priority from work_order
+        where state = #{state}
+        and customerServiceId in(
+        select distinct customerServiceId from customer_service
+        where nickName = #{nickName})
+    </select>
+    <select id="getTypeOptionsWith" resultType="java.lang.String">
+        select distinct type from work_order
+        where state = #{state}
+        and customerServiceId in(
+        select distinct customerServiceId from customer_service
+        where nickName = #{nickName})
+    </select>
+    <select id="getChannelOptionsWith" resultType="java.lang.String">
+        select distinct channel from work_order
+        where state = #{state}
+        and customerServiceId in(
+        select distinct customerServiceId from customer_service
+        where nickName = #{nickName})
+    </select>
+    <select id="getGroupOptionsWith" resultType="java.lang.String">
+        select distinct serviceGroup from customer_service
+        where nickName = #{nickName}
+    </select>
+    <select id="getOrderTotal" resultType="com.cishenn.ccs.entity.WorkOrder">
+        select * from work_order
+        where state = #{state}
+        and customerServiceId in(
+        select distinct customerServiceId from customer_service
+        where nickName = #{nickName})
+    </select>
 </mapper>
