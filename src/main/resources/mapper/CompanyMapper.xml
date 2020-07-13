@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cishenn.ccs.dao.CompanyMapper">
+    <insert id="save" parameterType="com.cishenn.ccs.entity.Company">
+        insert into company(name, ID,profession,number, pname,
+        phone, address,logo,comment)
+        values(#{company.name},#{company.ID},#{company.profession},#{company.number},#{company.pname},#{company.phone},#{company.address},#{company.logo},#{company.comment})
+    </insert>
+    <update id="update" parameterType="com.cishenn.ccs.entity.Company">>
+        update company set
+        name=#{workload.name}
+        where ID=#{ID}
+    </update>
+    <delete id="delete" parameterType="com.cishenn.ccs.entity.Company">
+        delete from company
+        where ID=#{ID}
+    </delete>
+    <select id="getOne" resultType="com.cishenn.ccs.entity.Company">
+        select * from company
+        where ID=${ID}
+    </select>
+    <select id="getAll" resultType="com.cishenn.ccs.entity.Company">
+        select * from company
+    </select>
+</mapper>
