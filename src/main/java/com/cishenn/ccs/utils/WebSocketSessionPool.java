@@ -49,8 +49,11 @@ public class WebSocketSessionPool<T> {
      */
     public void removeSession(Session session) {
         for (T client : onlineSessions.keySet(session)) {
-            onlineSessions.remove(client);
-            onlineCount.decrementAndGet();
+            if (onlineSessions.get(client) == session) {
+                onlineSessions.remove(client);
+                onlineCount.decrementAndGet();
+                return;
+            }
         }
     }
 

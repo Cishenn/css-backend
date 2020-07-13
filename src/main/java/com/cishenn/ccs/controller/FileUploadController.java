@@ -17,7 +17,7 @@ public class FileUploadController {
     private IFileUploadBiz fileUploadBiz;
 
     @PostMapping("/file")
-    public Result uploadFile(MultipartFile file) {
+    public Result uploadFile(@RequestBody MultipartFile file) {
         String uploadedFileUrl = fileUploadBiz.uploadFile(file);
         return Result.ok(uploadedFileUrl);
     }

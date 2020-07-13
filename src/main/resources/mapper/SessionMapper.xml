@@ -59,4 +59,9 @@
         ) OR session_message.sendTime is NULL)
         ORDER BY session_message.sendTime DESC
     </select>
+
+    <select id="getOne" resultType="com.cishenn.ccs.entity.Session">
+        SELECT * FROM session
+        WHERE sessionId = #{id}
+    </select>
 </mapper>
