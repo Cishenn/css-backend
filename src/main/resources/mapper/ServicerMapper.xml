@@ -34,8 +34,8 @@
         where customerServiceId = #{servicerId};
     </delete>
     <select id="getOne" resultType="com.cishenn.ccs.entity.Servicer">
-        select * from servicer
-        where customerServiceId = #{servicerId};
+        select * from customer_service
+        where customerServiceId = #{customerServiceId};
     </select>
     <select id="getAll" resultType="com.cishenn.ccs.entity.Servicer">
         select * from servicer

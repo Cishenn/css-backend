@@ -47,8 +47,8 @@ public class ServicerController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Servicer> getOne(@PathVariable Integer id){
-        return new ResponseEntity<>(iServicerBiz.getOne(id), HttpStatus.OK);
+    public Result getOne(@PathVariable Integer id){
+        return Result.ok(iServicerBiz.getOne(id));
     }
 
     @GetMapping("/")
