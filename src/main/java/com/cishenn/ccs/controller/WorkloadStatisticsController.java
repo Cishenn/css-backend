@@ -4,7 +4,7 @@ package com.cishenn.ccs.controller;
 import com.cishenn.ccs.biz.IWorkloadStatisticsBiz;
 import com.cishenn.ccs.entity.ElOption;
 import com.cishenn.ccs.entity.WorkloadStatistics;
-import com.cishenn.ccs.uitls.Result;
+import com.cishenn.ccs.utils.Result;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

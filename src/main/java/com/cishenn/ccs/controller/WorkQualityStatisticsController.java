@@ -6,7 +6,7 @@ import com.cishenn.ccs.entity.AttendanceStats;
 import com.cishenn.ccs.entity.ElOption;
 import com.cishenn.ccs.entity.Notice;
 import com.cishenn.ccs.entity.WorkQualityStatistics;
-import com.cishenn.ccs.uitls.Result;
+import com.cishenn.ccs.utils.Result;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

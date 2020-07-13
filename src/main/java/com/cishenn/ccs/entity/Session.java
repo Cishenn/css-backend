@@ -1,6 +1,8 @@
 package com.cishenn.ccs.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -19,4 +21,5 @@ public class Session {
     private Date firstResponseTime;
     private Integer customerMsgNum;
     private Integer customerServiceMsgNum;
+    private Boolean active;
 }
