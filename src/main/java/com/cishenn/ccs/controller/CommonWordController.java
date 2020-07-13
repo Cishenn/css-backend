@@ -13,15 +13,16 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/commonword")
-@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
+@RequestMapping(value = "/commonword")
+@CrossOrigin
 public class CommonWordController {
     @Autowired
     ICommonWordBiz iCommonWordBiz;
 
-    @PostMapping("/")
-    void save(@RequestBody CommonWord commonWord){
+    @PostMapping("/inser")
+    int save(@RequestBody CommonWord commonWord){
         iCommonWordBiz.save(commonWord);
+        return 0;
     }
 
     @DeleteMapping("/{creatorId}")
@@ -38,6 +39,13 @@ public class CommonWordController {
     @GetMapping("/{creatorId}")
     ResponseEntity<CommonWord> getOne(@PathVariable Integer creatorId){
         return new ResponseEntity<>(iCommonWordBiz.getOne(creatorId), HttpStatus.OK);
+    }
+
+    @GetMapping("/onelib")
+    ResponseEntity<Map<String, List<CommonWord>>> getOneType(String lib){
+        Map<String, List<CommonWord>> result=new HashMap();
+        result.put("common_word",iCommonWordBiz.getOneLib(lib));
+        return new ResponseEntity<>(result,HttpStatus.OK);
     }
 
     @GetMapping("/")

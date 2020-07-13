@@ -15,6 +15,8 @@ public interface CommonWordMapper {
 
     CommonWord getOne(Integer creatorId);
 
+    List<CommonWord> getOneLib(String lib);
+
     List<CommonWord> getAll();
 
 }

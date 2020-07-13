@@ -15,11 +15,12 @@ public class CommonWordBizImpl implements ICommonWordBiz {
     CommonWordMapper commonWordMapper;
 
     @Override
-    public void save(CommonWord commonWord) {
+    public int save(CommonWord commonWord) {
         int result=commonWordMapper.save(commonWord);
         if(result==0){
             throw new CommonWordException("Create CommonWord Entity Error");
         }
+        return 0;
     }
 
     @Override
@@ -43,6 +44,15 @@ public class CommonWordBizImpl implements ICommonWordBiz {
         CommonWord result=commonWordMapper.getOne(creatorId);
         if(result==null){
             throw new CommonWordException("Get One CommonWord Entity Error(maybe no such entity");
+        }
+        return result;
+    }
+
+    @Override
+    public List<CommonWord> getOneLib(String lib) {
+        List<CommonWord> result = commonWordMapper.getOneLib(lib);
+        if(result==null){
+            throw new CommonWordException("Get OneLib CommonWord Entity Error(maybe no such entity");
         }
         return result;
     }

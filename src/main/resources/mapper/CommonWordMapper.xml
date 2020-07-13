@@ -6,8 +6,8 @@
 
     <insert id="save" parameterType="com.cishenn.ccs.entity.CommonWord">
          --  杨老板组数据库字段使用的是驼峰命名，如果我们不适用这种命名方法，相应位置需要改动
-        insert into common_word(content,lib,type,creatorId)
-        values(#{content}, #{lib}, #{type}, #{creatorId})
+        insert into common_word(content,lib, type)
+        values(#{content}, #{lib}, #{type})
     </insert>
     <update id="update" parameterType="com.cishenn.ccs.entity.CommonWord">
         update common_word set
@@ -26,7 +26,11 @@
         select * from common_word
         where creatorId = #{creatorId};
     </select>
-    <select id="getAll" resultType="com.cishenn.ccs.entity.CommonWord">
+    <select id="getOneLib" resultType="CommonWord">
+        select * from common_word
+        where lib = #{lib};
+    </select>
+    <select id="getAll" resultType="CommonWord">
         select * from common_word
     </select>
 
