@@ -1,7 +1,10 @@
 package com.cishenn.ccs.biz;
 
+import com.cishenn.ccs.entity.AttendanceStats;
+import com.cishenn.ccs.entity.ElOption;
 import com.cishenn.ccs.entity.Notice;
 import com.cishenn.ccs.entity.WorkQualityStatistics;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -15,4 +18,13 @@ public interface IWorkQualityStatisticsBiz {
     WorkQualityStatistics getOne(Integer id);
 
     List<WorkQualityStatistics> getAll();
+
+
+    PageInfo<WorkQualityStatistics> getWorkQualityList(Integer id, int currentPage, int pageSize);
+
+    PageInfo<WorkQualityStatistics> getSelectedWorkQualityList(String nickName, String serviceGroup, int currentPage, int pageSize);
+
+    List<ElOption> getServicerOptions();
+
+    List<ElOption> getGroupOptions();
 }

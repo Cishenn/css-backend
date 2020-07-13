@@ -1,22 +1,19 @@
 package com.cishenn.ccs.dao;
 
-import com.cishenn.ccs.entity.Notice;
-import com.cishenn.ccs.entity.WorkQualityStatistics;
+import com.cishenn.ccs.entity.WorkloadStatistics;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface WorkQualityStatisticsMapper {
-    int save(WorkQualityStatistics workQualityStatistics);
+public interface WorkloadStatisticsMapper {
+    int save(WorkloadStatistics workloadStatistics);
 
     int delete(Integer id);
 
-    int update(Integer id, WorkQualityStatistics workQualityStatistics);
+    WorkloadStatistics getOne(Integer id);
 
-    WorkQualityStatistics getOne(Integer id);
-
-    List<WorkQualityStatistics> getAll();
+    List<WorkloadStatistics> getAll();
 
     List getByGroup(String serviceGroup);
 
