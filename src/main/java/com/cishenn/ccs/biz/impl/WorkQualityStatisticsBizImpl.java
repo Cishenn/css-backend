@@ -4,6 +4,7 @@ package com.cishenn.ccs.biz.impl;
 import com.cishenn.ccs.biz.IWorkQualityStatisticsBiz;
 import com.cishenn.ccs.dao.NoticeMapper;
 import com.cishenn.ccs.dao.WorkQualityStatisticsMapper;
+import com.cishenn.ccs.entity.ElOption;
 import com.cishenn.ccs.entity.Notice;
 import com.cishenn.ccs.entity.WorkQualityStatistics;
 import com.cishenn.ccs.exception.NoticeException;
@@ -13,6 +14,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -82,5 +84,39 @@ public class WorkQualityStatisticsBizImpl implements IWorkQualityStatisticsBiz {
             pageInfo = new PageInfo(workQualityStatisticsMapper.getSelected(nickName,serviceGroup));
         }
         return pageInfo;
+    }
+
+    @Override
+    public List<ElOption> getServicerOptions() {
+        List<String> servicerElement = workQualityStatisticsMapper.getServicerOptions();
+        List<ElOption> servicerOptions = new ArrayList<>();
+        ElOption tempOption = new ElOption();
+        tempOption.setValue("全部客服");
+        tempOption.setLabel("全部客服");
+        servicerOptions.add(tempOption);
+        for(int i=0;i<servicerElement.size();i++){
+            ElOption temp = new ElOption();
+            temp.setValue(servicerElement.get(i));
+            temp.setLabel(servicerElement.get(i));
+            servicerOptions.add(temp);
+        }
+        return servicerOptions;
+    }
+
+    @Override
+    public List<ElOption> getGroupOptions() {
+        List<String> groupElement = workQualityStatisticsMapper.getGroupOptions();
+        List<ElOption> groupOptions = new ArrayList<>();
+        ElOption tempOption = new ElOption();
+        tempOption.setValue("全部客服组");
+        tempOption.setLabel("全部客服组");
+        groupOptions.add(tempOption);
+        for(int i=0;i<groupElement.size();i++){
+            ElOption temp = new ElOption();
+            temp.setValue(groupElement.get(i));
+            temp.setLabel(groupElement.get(i));
+            groupOptions.add(temp);
+        }
+        return groupOptions;
     }
 }

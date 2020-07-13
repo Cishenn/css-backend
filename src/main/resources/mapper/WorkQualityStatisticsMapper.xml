@@ -46,4 +46,12 @@
         select nickName from customer_service
         where serviceGroup = #{serviceGroup})
     </select>
+    <select id="getServicerOptions" resultType="java.lang.String">
+        select distinct nickName from work_quality_statistics
+    </select>
+    <select id="getGroupOptions" resultType="java.lang.String">
+        select distinct serviceGroup from customer_service
+        where nickName in(
+        select distinct nickName from work_quality_statistics)
+    </select>
 </mapper>

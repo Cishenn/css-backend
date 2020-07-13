@@ -3,6 +3,7 @@ package com.cishenn.ccs.controller;
 import com.cishenn.ccs.biz.INoticeBiz;
 import com.cishenn.ccs.biz.IWorkQualityStatisticsBiz;
 import com.cishenn.ccs.entity.AttendanceStats;
+import com.cishenn.ccs.entity.ElOption;
 import com.cishenn.ccs.entity.Notice;
 import com.cishenn.ccs.entity.WorkQualityStatistics;
 import com.cishenn.ccs.uitls.Result;
@@ -65,5 +66,19 @@ public class WorkQualityStatisticsController {
                                               @RequestParam(required = false,defaultValue ="10")int pageSize){
         PageInfo<WorkQualityStatistics> pageInfo = iWorkQualityStatisticsBiz.getSelectedWorkQualityList(nickName,serviceGroup,currentPage,pageSize);
         return pageInfo;
+    }
+
+    @GetMapping("/servicerOptions")
+    Result getServicerOptions() {
+        Map<String, List<ElOption>> result = new HashMap<>();
+        result.put("ElOption", iWorkQualityStatisticsBiz.getServicerOptions());
+        return Result.ok(result);
+    }
+
+    @GetMapping("/groupOptions")
+    Result getGroupOptions() {
+        Map<String, List<ElOption>> result = new HashMap<>();
+        result.put("ElOption", iWorkQualityStatisticsBiz.getGroupOptions());
+        return Result.ok(result);
     }
 }

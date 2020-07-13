@@ -1,12 +1,12 @@
 package com.cishenn.ccs.biz.impl;
 
-import com.cishenn.ccs.biz.IAttendanceStatsBiz;
-import com.cishenn.ccs.dao.AttendanceStatsMapper;
+import com.cishenn.ccs.biz.IWorkloadStatisticsBiz;
+import com.cishenn.ccs.dao.WorkloadStatisticsMapper;
 import com.cishenn.ccs.entity.AttendanceStats;
-import com.cishenn.ccs.entity.Customer;
 import com.cishenn.ccs.entity.ElOption;
+import com.cishenn.ccs.entity.WorkloadStatistics;
 import com.cishenn.ccs.exception.AttendanceStatsException;
-import com.cishenn.ccs.exception.CustomerException;
+import com.cishenn.ccs.exception.WorkloadStatisticsException;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AttendanceStasBizImpl implements IAttendanceStatsBiz {
+public class WorkloadStatisticsBizImpl implements IWorkloadStatisticsBiz {
     @Autowired
-    AttendanceStatsMapper attendanceStatsMapper;
-
+    WorkloadStatisticsMapper workloadStatisticsMapper;
 
     @Override
-    public int save(AttendanceStats attendanceStats) {
-        int result=attendanceStatsMapper.save(attendanceStats);
+    public int save(WorkloadStatistics workloadStatistics) {
+        int result=workloadStatisticsMapper.save(workloadStatistics);
         if(result==0){
-            throw new AttendanceStatsException("Save AttendanceStats Entity Error");
+            throw new WorkloadStatisticsException("Save WorkloadStatistics Entity Error");
         }
 
         return 0;
@@ -33,65 +32,55 @@ public class AttendanceStasBizImpl implements IAttendanceStatsBiz {
 
     @Override
     public int delete(Integer id) {
-        int result=attendanceStatsMapper.delete(id);
+        int result=workloadStatisticsMapper.delete(id);
         if(result==0){
-            throw new AttendanceStatsException("delete AttendanceStats Entity Error");
+            throw new WorkloadStatisticsException("delete WorkloadStatistics Entity Error");
         }
 
         return 0;
     }
 
     @Override
-    public int update(Integer id, AttendanceStats attendanceStats) {
-        int result=attendanceStatsMapper.update(id, attendanceStats);
-        if(result==0){
-            throw new AttendanceStatsException("update AttendanceStats Entity Error");
-        }
-
-        return 0;
-    }
-
-    @Override
-    public AttendanceStats getOne(Integer id) {
-        AttendanceStats result = attendanceStatsMapper.getOne(id);
+    public WorkloadStatistics getOne(Integer id) {
+        WorkloadStatistics result = workloadStatisticsMapper.getOne(id);
         if(result == null){
-            throw new AttendanceStatsException("getOne AttendanceStats Entity Error");
+            throw new WorkloadStatisticsException("getOne WorkloadStatistics Entity Error");
         }
 
         return result;
     }
 
     @Override
-    public List<AttendanceStats> getAll() {
-        return attendanceStatsMapper.getAll();
+    public List<WorkloadStatistics> getAll() {
+        return workloadStatisticsMapper.getAll();
     }
 
     @Override
-    public PageInfo<AttendanceStats> getAttendanceList(Integer id, int currentPage, int pageSize) {
+    public PageInfo<WorkloadStatistics> getWorkloadStatisticsList(Integer id, int currentPage, int pageSize) {
         PageHelper.startPage(currentPage,pageSize);
-        PageInfo pageInfo = new PageInfo(attendanceStatsMapper.getAll());
+        PageInfo pageInfo = new PageInfo(workloadStatisticsMapper.getAll());
         return pageInfo;
     }
 
     @Override
-    public PageInfo<AttendanceStats> getSelectedAttendanceList(String nickName, String serviceGroup, int currentPage, int pageSize) {
+    public PageInfo<WorkloadStatistics> getSelectedWorkloadStatisticsList(String nickName, String serviceGroup, int currentPage, int pageSize) {
         PageHelper.startPage(currentPage,pageSize);
         PageInfo pageInfo = null;
         if(nickName.equals("全部客服") && serviceGroup.equals("全部客服组")){
-            pageInfo = new PageInfo(attendanceStatsMapper.getAll());
+            pageInfo = new PageInfo(workloadStatisticsMapper.getAll());
         }else if(nickName.equals("全部客服") && !serviceGroup.equals("全部客服组")){
-            pageInfo = new PageInfo(attendanceStatsMapper.getByGroup(serviceGroup));
+            pageInfo = new PageInfo(workloadStatisticsMapper.getByGroup(serviceGroup));
         }else if(!nickName.equals("全部客服") && serviceGroup.equals("全部客服组")){
-            pageInfo = new PageInfo(attendanceStatsMapper.getByServicer(nickName));
+            pageInfo = new PageInfo(workloadStatisticsMapper.getByServicer(nickName));
         }else if(!nickName.equals("全部客服") && !serviceGroup.equals("全部客服组")){
-            pageInfo = new PageInfo(attendanceStatsMapper.getSelected(nickName,serviceGroup));
+            pageInfo = new PageInfo(workloadStatisticsMapper.getSelected(nickName,serviceGroup));
         }
         return pageInfo;
     }
 
     @Override
     public List<ElOption> getServicerOptions() {
-        List<String> servicerElement = attendanceStatsMapper.getServicerOptions();
+        List<String> servicerElement = workloadStatisticsMapper.getServicerOptions();
         List<ElOption> servicerOptions = new ArrayList<>();
         ElOption tempOption = new ElOption();
         tempOption.setValue("全部客服");
@@ -108,7 +97,7 @@ public class AttendanceStasBizImpl implements IAttendanceStatsBiz {
 
     @Override
     public List<ElOption> getGroupOptions() {
-        List<String> groupElement = attendanceStatsMapper.getGroupOptions();
+        List<String> groupElement = workloadStatisticsMapper.getGroupOptions();
         List<ElOption> groupOptions = new ArrayList<>();
         ElOption tempOption = new ElOption();
         tempOption.setValue("全部客服组");
@@ -122,5 +111,4 @@ public class AttendanceStasBizImpl implements IAttendanceStatsBiz {
         }
         return groupOptions;
     }
-
 }

@@ -4,6 +4,7 @@ import com.cishenn.ccs.biz.IAttendanceStatsBiz;
 import com.cishenn.ccs.biz.IBlacklistBiz;
 import com.cishenn.ccs.entity.AttendanceStats;
 import com.cishenn.ccs.entity.Blacklist;
+import com.cishenn.ccs.entity.ElOption;
 import com.cishenn.ccs.uitls.Result;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,11 +63,17 @@ public class AttendanceStatsController {
         return pageInfo;
     }
 
-//    @GetMapping("/groupPage")
-//    public PageInfo currentAttendanceByGroup(String serviceGroup,
-//                                          @RequestParam(required = false,defaultValue ="1")int currentPage,
-//                                          @RequestParam(required = false,defaultValue ="10")int pageSize){
-//        PageInfo<AttendanceStats> pageInfo = iAttendanceStatsBiz.getAttendanceListByGroup(serviceGroup,currentPage,pageSize);
-//        return pageInfo;
-//    }
+    @GetMapping("/servicerOptions")
+    Result getServicerOptions() {
+        Map<String, List<ElOption>> result = new HashMap<>();
+        result.put("ElOption", iAttendanceStatsBiz.getServicerOptions());
+        return Result.ok(result);
+    }
+
+    @GetMapping("/groupOptions")
+    Result getGroupOptions() {
+        Map<String, List<ElOption>> result = new HashMap<>();
+        result.put("ElOption", iAttendanceStatsBiz.getGroupOptions());
+        return Result.ok(result);
+    }
 }
