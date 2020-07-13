@@ -7,14 +7,10 @@ import java.util.Date;
 
 @Data
 public class SessionMsg {
-    private int id;
-    private String msgSenderId;
-    private String msgReceiverId;
-    private Session session;
-    private String msgSenderName;
-    private String content;
-
+    private Integer sessionMsgId;
+    private Boolean fromVisitor;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createTime ;
+    private Date sendTime;
+    private String content;
+    private Integer sessionId;
 }
-
