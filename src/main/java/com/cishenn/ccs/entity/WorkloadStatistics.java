@@ -11,4 +11,6 @@ public class WorkloadStatistics {
     private Integer totalEffectiveSessionCount;
     private Integer totalEndSessionCount;
     private Integer totalSessionTime;
+    private Integer averageSessionNum;
+    private Integer averageSessionTime;
 }

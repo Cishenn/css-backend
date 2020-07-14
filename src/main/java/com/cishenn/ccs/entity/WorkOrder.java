@@ -16,4 +16,6 @@ public class WorkOrder {
     private Integer customerServiceId;
     private Integer customerId;
     private String channel;
+    private String customerName;
+    private String latestTime;
 }
