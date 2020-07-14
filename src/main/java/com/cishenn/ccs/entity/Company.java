@@ -7,12 +7,13 @@ import java.util.Date;
 @Data
 public class Company {
     private String name;
+    private String account;
     private String ID;
-    private String profession;
+    private String industry;
     private String logo;
-    private String number;
-    private String pname;
+    private String teamScale;
+    private String contactName;
     private Integer phone;
     private String address;
-    private String comment;
+    private String remark;
 }

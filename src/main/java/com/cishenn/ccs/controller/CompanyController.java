@@ -2,6 +2,7 @@ package com.cishenn.ccs.controller;
 
 import com.cishenn.ccs.biz.ICompanyBiz;
 import com.cishenn.ccs.entity.Company;
+import com.cishenn.ccs.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,19 +23,19 @@ public class CompanyController {
         iCompanyBiz.save(company);
     }
 
-    @DeleteMapping("/{ID}")
-    void delete(@PathVariable String ID){
-        iCompanyBiz.delete(ID);
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable String id){
+        iCompanyBiz.delete(id);
     }
 
-    @PutMapping("/{ID}")
-    void update(@PathVariable String ID, @RequestBody Company company){
-        iCompanyBiz.update(ID, company);
+    @PutMapping("/{id}")
+    void update(@PathVariable String id, @RequestBody Company company){
+        iCompanyBiz.update(id, company);
     }
 
-    @GetMapping("/{ID}")
-    ResponseEntity<Company> getOne(@PathVariable String ID){
-        return new ResponseEntity<>(iCompanyBiz.getOne(ID), HttpStatus.OK);
+    @GetMapping("/{id}")
+    public Result getOne(@PathVariable Integer id){
+        return Result.ok(iCompanyBiz.getOne(id));
     }
 
     @GetMapping("/")

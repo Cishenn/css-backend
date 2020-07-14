@@ -14,7 +14,7 @@ public interface CompanyMapper {
 
     int delete(String ID);
 
-    Company getOne(String ID);
+    Company getOne(Integer ID);
 
     List<Company> getAll();
 }

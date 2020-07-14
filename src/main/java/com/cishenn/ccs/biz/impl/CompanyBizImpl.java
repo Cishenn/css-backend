@@ -23,24 +23,24 @@ public class CompanyBizImpl implements ICompanyBiz {
     }
 
     @Override
-    public void delete(String ID){
-        int result=companyMapper.delete(ID);
+    public void delete(String id){
+        int result=companyMapper.delete(id);
         if(result==0){
             throw new CompanyException("Delete Company Entity Error");
         }
     }
 
     @Override
-    public void update(String ID, Company company){
-        int result=companyMapper.update(ID, company);
+    public void update(String id, Company company){
+        int result=companyMapper.update(id, company);
         if(result==0){
             throw new CompanyException("Update Company Entity Error");
         }
     }
 
     @Override
-    public Company getOne(String ID) {
-        Company result = companyMapper.getOne(ID);
+    public Company getOne(Integer id) {
+        Company result = companyMapper.getOne(id);
         if(result==null){
             throw new CompanyException("Retrieve Company Entity Error(maybe no such entity");
         }

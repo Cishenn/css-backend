@@ -7,11 +7,11 @@ import java.util.List;
 public interface ICompanyBiz {
     void save(Company company);
 
-    void update(String ID, Company company);
+    void update(String id, Company company);
 
-    void delete(String ID);
+    void delete(String id);
 
-    Company getOne(String ID);
+    Company getOne(Integer id);
 
     List<Company> getAll();
 }
