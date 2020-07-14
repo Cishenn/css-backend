@@ -150,4 +150,64 @@ public class WorkOrderBizImpl implements IWorkOrderBiz {
         }
         return groupOptions;
     }
+
+    @Override
+    public List<ElOption> getPriorityOptions(String state, String nickName) {
+        List<String> priorityElement = workOrderMapper.getPriorityOptionsWith(state,nickName);
+        List<ElOption> priorityOptions = new ArrayList<>();
+        for(int i=0;i<priorityElement.size();i++){
+            ElOption temp = new ElOption();
+            temp.setValue(priorityElement.get(i));
+            temp.setLabel(priorityElement.get(i));
+            priorityOptions.add(temp);
+        }
+        return priorityOptions;
+    }
+
+    @Override
+    public List<ElOption> getTypeOptions(String state, String nickName) {
+        List<String> typeElement = workOrderMapper.getTypeOptionsWith(state,nickName);
+        List<ElOption> typeOptions = new ArrayList<>();
+        for(int i=0;i<typeElement.size();i++){
+            ElOption temp = new ElOption();
+            temp.setValue(typeElement.get(i));
+            temp.setLabel(typeElement.get(i));
+            typeOptions.add(temp);
+        }
+        return typeOptions;
+    }
+
+    @Override
+    public List<ElOption> getChannelOptions(String state, String nickName) {
+        List<String> channelElement = workOrderMapper.getChannelOptionsWith(state,nickName);
+        List<ElOption> channelOptions = new ArrayList<>();
+        for(int i=0;i<channelElement.size();i++){
+            ElOption temp = new ElOption();
+            temp.setValue(channelElement.get(i));
+            temp.setLabel(channelElement.get(i));
+            channelOptions.add(temp);
+        }
+        return channelOptions;
+    }
+
+    @Override
+    public List<ElOption> getGroupOptions(String state, String nickName) {
+        List<String> groupElement = workOrderMapper.getGroupOptionsWith(state,nickName);
+        List<ElOption> groupOptions = new ArrayList<>();
+        for(int i=0;i<groupElement.size();i++){
+            ElOption temp = new ElOption();
+            temp.setValue(groupElement.get(i));
+            temp.setLabel(groupElement.get(i));
+            groupOptions.add(temp);
+        }
+        return groupOptions;
+    }
+
+    @Override
+    public PageInfo<WorkOrder> getOrderTotal(String state, String nickName, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        PageInfo pageInfo = null;
+        pageInfo = new PageInfo(workOrderMapper.getOrderTotal(state,nickName));
+        return pageInfo;
+    }
 }

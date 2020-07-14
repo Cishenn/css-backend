@@ -28,4 +28,14 @@ public interface WorkOrderMapper {
     List<String> getServicerOptions();
 
     List<String> getGroupOptions();
+
+    List<String> getPriorityOptionsWith(String state, String nickName);
+
+    List<String> getTypeOptionsWith(String state, String nickName);
+
+    List<String> getChannelOptionsWith(String state, String nickName);
+
+    List<String> getGroupOptionsWith(String state, String nickName);
+
+    List getOrderTotal(String state, String nickName);
 }

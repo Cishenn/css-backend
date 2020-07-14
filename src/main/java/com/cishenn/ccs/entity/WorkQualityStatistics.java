@@ -13,4 +13,6 @@ public class WorkQualityStatistics {
     private Integer mediumReview;
     private Integer badReview;
     private Integer noReview;
+    private Integer firstAverageTime;
+    private Integer averageTime;
 }

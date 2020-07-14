@@ -30,4 +30,14 @@ public interface IWorkOrderBiz {
     List<ElOption> getServicerOptions();
 
     List<ElOption> getGroupOptions();
+
+    List<ElOption> getPriorityOptions(String state, String nickName);
+
+    List<ElOption> getTypeOptions(String state, String nickName);
+
+    List<ElOption> getChannelOptions(String state, String nickName);
+
+    List<ElOption> getGroupOptions(String state, String nickName);
+
+    PageInfo<WorkOrder> getOrderTotal(String state, String nickName, int currentPage, int pageSize);
 }

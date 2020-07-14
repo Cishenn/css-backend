@@ -69,6 +69,15 @@ public class WorkOrderController {
         return pageInfo;
     }
 
+    @GetMapping("/getOrderTotal")
+    public PageInfo getOrderTotal(String state,
+                                 String nickName,
+                                 @RequestParam(required = false,defaultValue ="1")int currentPage,
+                                 @RequestParam(required = false,defaultValue ="10")int pageSize){
+        PageInfo<WorkOrder> pageInfo = iWorkOrderBiz.getOrderTotal(state,nickName,currentPage,pageSize);
+        return pageInfo;
+    }
+
     @GetMapping("/stateOptions")
     Result getStateOptions() {
         Map<String, List<ElOption>> result = new HashMap<>();
@@ -83,6 +92,13 @@ public class WorkOrderController {
         return Result.ok(result);
     }
 
+    @GetMapping("/priorityOptionsWith")
+    Result getPriorityOptions(String state,String nickName) {
+        Map<String, List<ElOption>> result = new HashMap<>();
+        result.put("ElOption", iWorkOrderBiz.getPriorityOptions(state,nickName));
+        return Result.ok(result);
+    }
+
     @GetMapping("/typeOptions")
     Result getTypeOptions() {
         Map<String, List<ElOption>> result = new HashMap<>();
@@ -90,10 +106,24 @@ public class WorkOrderController {
         return Result.ok(result);
     }
 
+    @GetMapping("/typeOptionsWith")
+    Result getTypeOptions(String state,String nickName) {
+        Map<String, List<ElOption>> result = new HashMap<>();
+        result.put("ElOption", iWorkOrderBiz.getTypeOptions(state,nickName));
+        return Result.ok(result);
+    }
+
     @GetMapping("/channelOptions")
     Result getChannelOptions() {
         Map<String, List<ElOption>> result = new HashMap<>();
         result.put("ElOption", iWorkOrderBiz.getChannelOptions());
+        return Result.ok(result);
+    }
+
+    @GetMapping("/channelOptionsWith")
+    Result getChannelOptions(String state,String nickName) {
+        Map<String, List<ElOption>> result = new HashMap<>();
+        result.put("ElOption", iWorkOrderBiz.getChannelOptions(state,nickName));
         return Result.ok(result);
     }
 
@@ -110,4 +140,13 @@ public class WorkOrderController {
         result.put("ElOption", iWorkOrderBiz.getGroupOptions());
         return Result.ok(result);
     }
+
+    @GetMapping("/groupOptionsWith")
+    Result getGroupOptions(String state,String nickName) {
+        Map<String, List<ElOption>> result = new HashMap<>();
+        result.put("ElOption", iWorkOrderBiz.getGroupOptions(state,nickName));
+        return Result.ok(result);
+    }
+
+
 }
