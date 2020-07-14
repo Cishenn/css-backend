@@ -46,6 +46,7 @@ public class AliyunOssFileUploadImpl implements IFileUploadBiz {
             String archiveFilename = getArchiveFilename(originalFilename, "upload/");
             return doUploadFile(archiveFilename, file.getInputStream(), metadata);
         } catch (IOException e) {
+            e.printStackTrace();
             throw new FileUploadException("文件上传失败", e);
         }
     }
@@ -61,6 +62,7 @@ public class AliyunOssFileUploadImpl implements IFileUploadBiz {
             String archiveFilename = getArchiveFilename(originalFilename, "assets/");
             return doUploadFile(archiveFilename, image.getInputStream(), metadata);
         } catch (IOException e) {
+            e.printStackTrace();
             throw new FileUploadException("文件上传失败", e);
         }
     }
