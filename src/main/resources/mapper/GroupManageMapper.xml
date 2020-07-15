@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cishenn.ccs.dao.GroupManageMapper">
+    <insert id="save" parameterType="com.cishenn.ccs.entity.GroupManage">
+        insert into tag(groupId,name,number,createTime)
+        values(#{groupmanage.groupId},#{groupmanage.name},#{groupmanage.number},#{groupmanage.createTime})
+    </insert>
+
+    <update id="update">
+        update GroupManage set
+        name = #{name}
+        where groupId = #{groupmanage.groupId};
+    </update>
+
+    <delete id="delete" parameterType="com.cishenn.ccs.entity.GroupManage">
+        delete from GroupManage
+        where groupID=#{groupId}
+    </delete>
+
+    <select id="getOne" resultType="com.cishenn.ccs.entity.GroupManage">
+        select * from GroupManage
+        where groupID=#{groupId}
+    </select>
+
+    <select id="getAll" resultType="com.cishenn.ccs.entity.GroupManage">
+        select * from GroupManage
+    </select>
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cishenn.ccs.dao.RoleManageMapper">
+
+    <insert id="save" parameterType="RoleManage">
+        --  杨老板组数据库字段使用的是驼峰命名，如果我们不适用这种命名方法，相应位置需要改动
+--         此处roleId不知道需不需要添加，暂时先添加上
+        insert into role_manage(roleId,roleName,roleCount,createTime,roleDesc,power)
+        values(#{roleId}, #{roleName}, #{roleCount}, #{createTime}, #{roleDesc}, #{power})
+    </insert>
+    <update id="update" parameterType="RoleManage">
+        update role_manage set
+            roleId = #{roleManage.roleId},
+            roleName = #{roleManage.roleName},
+            roleCount = #{roleManage.roleCount},
+            createTime = #{roleManage.createTime},
+            roleDesc = #{roleManage.roleDesc},
+            power = #{roleManage.power}
+        where roleId = #{roleId};
+--         此处的where语句有问题，待改
+    </update>
+    <delete id="delete" parameterType="RoleManage">
+        delete from role_manage
+        where roleId = #{roleId};
+    </delete>
+    <select id="getOne" resultType="RoleManage">
+        select * from role_manage
+        where roleId = #{roleId};
+    </select>
+    <select id="getAll" resultType="RoleManage">
+        select * from role_manage
+    </select>
+
+
+</mapper>
+
+

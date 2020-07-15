@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cishenn.ccs.dao.WorkOrderReplyMapper">
+
+    <insert id="save" parameterType="WorkOrderReply">
+         --  杨老板组数据库字段使用的是驼峰命名，如果我们不适用这种命名方法，相应位置需要改动
+        insert into work_order_reply(workOrderId,servicerId,replyTime,content)
+        values(#{workOrderId}, #{servicerId}, #{replyTime}, #{content})
+    </insert>
+    <update id="update" parameterType="WorkOrderReply">
+        update work_order_reply set
+            workOrderId = #{workOrderReply.workOrderId},
+            servicerId = #{workOrderReply.servicerId},
+            replyTime = #{workOrderReply.replyTime},
+            content = #{workOrderReply.content}
+        where workOrderId = #{workOrderId};
+        --此处where有问题,待解决
+    </update>
+    <delete id="delete" parameterType="WorkOrderReply">
+        delete from work_order_reply
+        where workOrderId = #{workOrderId};
+    </delete>
+    <select id="getOne" resultType="WorkOrderReply">
+        select * from work_order_reply
+        where workOrderId = #{workOrderId};
+    </select>
+    <select id="getAll" resultType="WorkOrderReply">
+        select * from work_order_reply
+    </select>
+
+
+</mapper>
